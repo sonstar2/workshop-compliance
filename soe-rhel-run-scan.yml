@@ -1,0 +1,37 @@
+---
+- name: Apply CIS Benchmark security/compliance hardenning to the NEW RHEL 9 VM 
+#  hosts: "{{ v_hostname_fqdn }}"
+  hosts: all
+#  remote_user: "{{ var_prov_user }}"
+  become: true
+  become_method: sudo
+  collections:
+    - rhdemo.compliance
+
+  tasks: 
+
+    - name: Run Openscap Scan
+      ansible.builtin.include_role:
+        name: openscap-scanner
+
+    - name: Fetch report to controller
+      ansible.builtin.fetch:
+        src: "/tmp/oscap-report-{{ ansible_nodename }}-{{ v_stage }}.html"
+        dest: "./oscap-report-{{ ansible_nodename }}-{{ v_stage }}.html"
+        flat: true
+
+    - name: copy report to bastion 
+      ansible.builtin.copy:
+        src: "./oscap-report-{{ ansible_nodename }}-{{ v_stage }}.html"
+        dest: "/home/{{ v_bastion_user }}/"
+      delegate_to: ssh.ocpv02.dal10.infra.demo.redhat.com
+      vars:
+        ansible_port: "{{ v_bastion_port }}"
+        ansible_user: "{{ v_bastion_user }}"
+        ansible_ssh_pass: "{{ v_bastion_pass }}"
+        ansible_become_pass: "{{ v_bastion_pass }}"
+
+    - ansible.builtin.file:
+        path: "./oscap-report-{{ ansible_nodename }}-{{ v_stage }}.html"
+        state: absent
+
