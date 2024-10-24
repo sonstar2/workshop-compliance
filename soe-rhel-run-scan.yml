@@ -29,7 +29,7 @@
         ansible_port: "{{ v_bastion_port }}"
         ansible_user: "{{ v_bastion_user }}"
         ansible_ssh_pass: "{{ v_bastion_pass }}"
-        ansible_become_pass: "{{ v_bastion_pass }}"
+#       ansible_become_pass: "{{ v_bastion_pass }}"
 
     - ansible.builtin.file:
         path: "./oscap-report-{{ ansible_nodename }}-{{ v_stage }}.html"
