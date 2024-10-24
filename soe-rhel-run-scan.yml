@@ -1,8 +1,6 @@
 ---
 - name: Apply CIS Benchmark security/compliance hardenning to the NEW RHEL 9 VM 
-#  hosts: "{{ v_hostname_fqdn }}"
   hosts: all
-#  remote_user: "{{ var_prov_user }}"
   become: true
   become_method: sudo
   collections:
@@ -26,10 +24,10 @@
         dest: "/home/{{ v_bastion_user }}/"
       delegate_to: bastion.9s6m5.sandbox2962.opentlc.com
       vars:
-        ansible_port: "{{ v_bastion_port }}"
+#       ansible_port: "{{ v_bastion_port }}"
         ansible_user: "{{ v_bastion_user }}"
         ansible_ssh_pass: "{{ v_bastion_pass }}"
-#       ansible_become_pass: "{{ v_bastion_pass }}"
+        ansible_become_pass: "{{ v_bastion_pass }}"
 
     - ansible.builtin.file:
         path: "./oscap-report-{{ ansible_nodename }}-{{ v_stage }}.html"
