@@ -113,7 +113,7 @@ Click the **Add** icon and add new credential
 | SSH Private Key | *Your provided key* |  |
 | Privilege Escalation Method | sudo  |  |
 | Privilege Escalation Username | root |  |
-| Privilege Escalation Password | RedH@t12345_ |  |
+| Privilege Escalation Password | *ansible_password* |  |
 
 
 ### Create an SCM Credential
