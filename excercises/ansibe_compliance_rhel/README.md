@@ -115,23 +115,9 @@ Click the **Add** icon and add new credential
 | Privilege Escalation Username | root |  |
 | Privilege Escalation Password | RedH@t12345_ |  |
 
-### Create a Machine Credential
 
 ### Create an SCM Credential
 PLEASE SKIP THIS SECTION 
-We need another credential to access our source code repository where our automation projects will live. Repeat the process as above, but with the following details:
-
-
-
-
-| Key | Value | Notes |
-|----------|----------|----------|
-| Name | Git Credential |  |
-| Description | SCM credential for project sync |  |
-| Organization | user org |  |
-| Credential Type	 | Source Control |  |
-| Username | oauth2  |  |
-| Password | *PAT* |  |
 
 # Create Project
 
