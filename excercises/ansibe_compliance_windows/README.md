@@ -16,35 +16,9 @@ Start setting up AAP environment by adding:
 
 # Examine the Code 
 
-Using your preferred IDE environment (VS Code for example), clone and inspect the workshop repository 
+Using your preferred IDE environment (VS Code for example), clone and inspect the workshop repository, or use the browser  
 
-```
-[student1@ansible ~]$ git clone https://oauth2:glpat-x21uCV9-zrZLy3uufffg@gitlab.com/ansible-workshops/compliance-os.git
-```
-
->`git` and `vim` are available on the control node, as well as Visual Studio 
-
-Now, list the directory structure and examine 
-
-```bash
-[lab-user@bastion compliance-os]$ tree -L 4
-.
-├── README.md
-├── ansible.cfg
-├── collections
-│   ├── ansible_collections
-│   │   ├── ansible
-│   │   │   └── windows
-│   │   ├── community
-│   │   │   ├── general
-│   │   │   └── windows
-│   │   └── rhdemo
-│   │       └── compliance
-│   └── backup_requirements.yml
-├── soe-rhel-run-scan.yml
-├── soe-rhel9-cis-hardenning.yml
-└── soe-win2022-cis-hardenning.yml
-```
+    https://github.com/agenthorus/workshop-compliance 
 
 Inspect the `win2022` CIS hardening playbook 
 
@@ -180,7 +154,7 @@ Add new Project with the following details
 | Description | Compliance Code |  |
 | Organization | user org |  |
 | SCM Type	 | Git  |  |
-| SCM URL	 | *Your provided personal access token* |  |
+| SCM URL	 | https://github.com/agenthorus/workshop-compliance |  |
 | SCM BRANCH	 |  | Intentionally blank |
 | SCM CREDENTIAL	 | Git Credential |  |
 
@@ -228,7 +202,7 @@ ansible_connection: winrm
 ansible_port: "5986"
 ansible_winrm_transport: credssp
 ansible_winrm_server_cert_validation: ignore
-v_bastion_port: "31018"
+v_bastion_port: "22"
 v_bastion_user: "*your username*"
 v_bastion_pass: "*your password*"
 ```
@@ -247,10 +221,9 @@ and Click Add (please make sure you add only the instance allocated to you as pe
 
 | Key | Value | Notes |
 |----------|----------|----------|
-| Name | *Public fully qualified name* |  |
+| Name | *Public fully qualified name* or *IP Address* |  |
 
 And Save. 
-
 
 
 
@@ -303,7 +276,7 @@ then Click ADD and select **Add Job Template**
 
 | Key | Value | Notes |
 |----------|----------|----------|
-| Name | JT - WIN Scan CIS Pre |  |
+| Name | Student Name - JT - WIN Scan CIS Pre |  |
 | Job Type | Run |  |
 | Organization | user org |  |
 | Inventory	 | Workshop Windows  |  |
@@ -335,7 +308,7 @@ After it is completed Successfully, inspect the job output.
 Login via `ssh` to the bastion server using your username:password as follows: 
 
 ```bash
-ssh <username>@ssh.ocpv02.dal10.infra.demo.redhat.com -p 31164
+ssh <username>@bastion.9s6m5.sandbox2962.opentlc.com -p 22
 ```
 
 the report will be the something similar to the following: 
@@ -346,7 +319,7 @@ the report will be the something similar to the following:
 copy the `html` report local to your workstation 
 
 ```bash
-scp -P 31164 <username>@ssh.ocpv02.dal10.infra.demo.redhat.com:/home/lab-user/windows-cis-report-preharden.html.html .
+scp -P 22 <username>@bastion.9s6m5.sandbox2962.opentlc.com:/home/lab-user/windows-cis-report-preharden.html.html .
 ```
 
 and inspect the report 
@@ -381,7 +354,7 @@ Save, Launch the Template and wait for ~10 mins for it to complete.
 
 | Key | Value | Notes |
 |----------|----------|----------|
-| Name | JT - WIN Scan CIS Post |  |
+| Name | Student Name - JT - WIN Scan CIS Post |  |
 | Job Type | Run |  |
 | Organization | user org |  |
 | Inventory	 | Workshop Windows  |  |
