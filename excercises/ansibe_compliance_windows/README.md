@@ -107,21 +107,7 @@ Click the **Add** icon and add new credential
 | Organization | Default |  |
 | Credential Type | Machine |  |
 | Username | ec2-user  |  |
-| Password | ansible_password |  |
-
-### Create an SCM Credential
-
-We need another credential to access our source code repository where our automation projects will live. Repeat the process as above, but with the following details:
-
-
-| Key | Value | Notes |
-|----------|----------|----------|
-| Name | Git Credential |  |
-| Description | SCM credential for project sync |  |
-| Organization | user org |  |
-| Credential Type	 | Source Control |  |
-| Username | oauth2  |  |
-| Password | *PAT* |  |
+| Password | *ansible_password* |  |
 
 
 # Create Project
