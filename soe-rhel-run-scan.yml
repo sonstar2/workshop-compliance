@@ -24,7 +24,7 @@
       ansible.builtin.copy:
         src: "./oscap-report-{{ ansible_nodename }}-{{ v_stage }}.html"
         dest: "/home/{{ v_bastion_user }}/"
-      delegate_to: ssh.ocpv02.dal10.infra.demo.redhat.com
+      delegate_to: bastion.9s6m5.sandbox2962.opentlc.com
       vars:
         ansible_port: "{{ v_bastion_port }}"
         ansible_user: "{{ v_bastion_user }}"
