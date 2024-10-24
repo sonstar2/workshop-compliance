@@ -16,35 +16,9 @@ Start setting up AAP environment by adding:
 
 # Examine the Code 
 
-Using your preferred IDE environment (VS Code for example), clone and inspect the workshop repository 
+Using your preferred IDE environment (VS Code for example), clone and inspect the workshop repository , or use the browser
 
-```
-[student1@ansible ~]$ git clone https://oauth2:glpat-x21uCV9-zrZLy3uufffg@gitlab.com/ansible-workshops/compliance-os.git
-```
-
->`git` and `vim` are available on the control node, as well as Visual Studio 
-
-Now, list the directory structure and examine 
-
-```bash
-[lab-user@bastion compliance-os]$ tree -L 4
-.
-├── README.md
-├── ansible.cfg
-├── collections
-│   ├── ansible_collections
-│   │   ├── ansible
-│   │   │   └── windows
-│   │   ├── community
-│   │   │   ├── general
-│   │   │   └── windows
-│   │   └── rhdemo
-│   │       └── compliance
-│   └── backup_requirements.yml
-├── soe-rhel-run-scan.yml
-├── soe-rhel9-cis-hardenning.yml
-└── soe-win2022-cis-hardenning.yml
-```
+    https://github.com/agenthorus/workshop-compliance
 
 Inspect the `rhel9` CIS hardening playbook 
 
@@ -93,7 +67,7 @@ Take some time to familiarize yourself with the code for each role and check the
 
 # Accessing AAP
 
-login to `https://aap-aap.apps.cluster-bvk6w-1.dynamic.redhatworkshops.io` and enter your login credentials
+login to `https://aapcontroller-aap.apps.cluster-9s6m5.9s6m5.sandbox2962.opentlc.com` and enter your login credentials
 
 There are a number of constructs in the Automation Controller UI that enable multi-tenancy, notifications, scheduling, etc. However, we are only going to focus on a few of the key constructs that are required for this workshop today.
 
@@ -166,8 +140,7 @@ We need another credential to access our source code repository where our automa
 
 In this environment, playbooks are stored in a git repository available on a Gitlab instance. Before a Project can be created in Automation Controller, the git URL for the repository is needed. In order to obtain the URL of your project, login to the Gitlab repository provided and copy the `https` url 
 
-
-![alt text](image-1.png)
+![alt text](image-8.png)
 
 **Step 2**
 ---
@@ -189,7 +162,7 @@ Add new Project with the following details
 | Description | Compliance Code |  |
 | Organization | user org |  |
 | SCM Type	 | Git  |  |
-| SCM URL	 |  |  |
+| SCM URL	 | https://github.com/agenthorus/workshop-compliance |  |
 | SCM BRANCH	 |  | Intentionally blank |
 | SCM CREDENTIAL	 | PLEASE SKIP |  |
 
@@ -233,7 +206,7 @@ In the Variables Section add the following:
 
 ```yaml
 ---
-v_bastion_port: "31164"
+v_bastion_port: "22"
 v_bastion_user: "*your username*"
 v_bastion_pass: "*your password*"
 ```
@@ -252,7 +225,7 @@ and Click Add (please make sure you add only the instance allocated to you as pe
 
 | Key | Value | Notes |
 |----------|----------|----------|
-| Name | *Public fully qualified name* |  |
+| Name | *Public fully qualified name* or *IP Address* |  |
 
 And Save. 
 
