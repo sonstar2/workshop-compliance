@@ -327,8 +327,6 @@ and inspect the report
 | Credentials	 |  Windows Credential |  |
 
 
-Options
-- [x] Privilege Escalation
 
 
 Save, Launch the Template and wait for ~10 mins for it to complete. 
