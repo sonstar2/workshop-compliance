@@ -297,7 +297,7 @@ After it is completed Successfully, inspect the job output.
 Login via `ssh` to the bastion server using your username:password as follows: 
 
 ```bash
-ssh <username>@ssh.ocpv02.dal10.infra.demo.redhat.com -p 31164
+ssh <username>@<*Bastion*> -p 22
 ```
 
 the report will be the something similar to the following: 
@@ -308,7 +308,7 @@ the report will be the something similar to the following:
 copy the `html` report local to your workstation 
 
 ```bash
-scp -P 31164 <username>@ssh.ocpv02.dal10.infra.demo.redhat.com:/home/lab-user/oscap-report-ip-172-16-155-219.ap-southeast-2.compute.internal-preharden.html .
+scp -P 22 <username>@<*Bastion*>:/home/lab-user/oscap-report-ip-172-16-155-219.ap-southeast-2.compute.internal-preharden.html .
 ```
 
 and inspect the report 
