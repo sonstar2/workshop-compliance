@@ -7,7 +7,6 @@ v_openscap_packages:
   - openscap-scanner
   - scap-security-guide
 
-openscap_profile: xccdf_org.ssgproject.content_profile_cis
 openscap_policy: ssg-rhel{{ ansible_distribution_major_version }}-ds
 openscap_policy_path: "/usr/share/xml/scap/ssg/content/ssg-rhel{{ ansible_distribution_major_version }}-ds.xml"
 

@@ -1,5 +1,5 @@
 ---
-- name: Apply CIS Benchmark security/compliance hardenning to the NEW RHEL 9 VM 
+- name: Apply {{ compliance_profile_id }} Benchmark security/compliance hardenning to the NEW RHEL 9 VM 
   hosts: all
   become: true
   become_method: sudo
@@ -11,6 +11,9 @@
     - name: Run Openscap Scan
       ansible.builtin.include_role:
         name: openscap-scanner
+      vars:
+        openscap_profile: xccdf_org.ssgproject.content_profile_{{ compliance_profile_id | lower }}
+
 
     - name: Fetch report to controller
       ansible.builtin.fetch:
