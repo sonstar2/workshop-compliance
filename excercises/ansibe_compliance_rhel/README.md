@@ -20,11 +20,11 @@ Using your preferred IDE environment (VS Code for example), clone and inspect th
 
     https://github.com/agenthorus/workshop-compliance
 
-Inspect the `rhel9` CIS hardening playbook 
+Inspect the `rhel9` Security hardening playbook 
 
 ```yaml
 ---
-- name: Apply CIS Benchmark security/compliance hardening to the NEW RHEL 9 VM
+- name: Apply {{ compliance_profile_id }} Benchmark security/compliance hardening to the NEW RHEL 9 VM
   hosts: all
   become: true
   become_method: sudo
@@ -33,10 +33,10 @@ Inspect the `rhel9` CIS hardening playbook
 
   tasks:
 
-    - name: Apply RHEL {{ ansible_distribution_major_version }}  CIS Compliance Hardenning
+    - name: Apply RHEL {{ ansible_distribution_major_version }}  {{ compliance_profile_id }} Compliance Hardenning
       ansible.builtin.include_role:
-        name: rhel{{ ansible_distribution_major_version }}-cis
-        tasks_from: rhel{{ ansible_distribution_major_version }}-playbook-cis.yml
+        name: rhel{{ ansible_distribution_major_version }}-{{ compliance_profile_id | lower }}
+        tasks_from: rhel{{ ansible_distribution_major_version }}-playbook-{{ compliance_profile_id | lower }}.yml
 
 <snip>
 ```
@@ -53,11 +53,13 @@ total 0
 drwxr-xr-x. 8 lab-user users 105 Aug 13 23:21 openscap-scanner
 drwxr-xr-x. 8 lab-user users 105 Aug 13 23:21 rhel8-cis
 drwxr-xr-x. 8 lab-user users 105 Aug 13 23:21 rhel9-cis
+drwxr-xr-x. 8 lab-user users 105 Aug 13 23:21 rhel9-e8
 drwxr-xr-x. 8 lab-user users 110 Aug 13 23:21 win2019-cis
 drwxr-xr-x. 9 lab-user users 122 Aug 13 23:21 win2022-cis
 ```
 
 - Role `rhel9-cis`, Apply CIS hardening for RHEL 9
+- Role `rhel9-e8`, Apply E8 hardening for RHEL 9
 - Role `win2022`, Apply CIS hardening for Windows 2022
 - Role `openscap-scanner`, install and run the openSCAP scanner on the RHEL nodes. This can be re-used with all RHEL versions
 
@@ -274,6 +276,16 @@ then Click ADD and select **Add Job Template**
 | Playbook	 | soe-rhel-run-scan.yml |  |
 | Credentials	 |  RHEL Credential |  |
 
+Survey
+| Question	 |  Answer variable name| Answer Type | Multiple Choice Options |
+|----------|----------|----------|--------------|
+| Compliance Profile ?| compliance_profile_id | Multiple Choice (Single Selection) | CIS and E8 |  |
+
+Survey
+| Question	 |  Answer variable name| Answer Type | Multiple Choice Options |
+|----------|----------|----------|--------------|
+| Compliance Profile ?| compliance_profile_id | Multiple Choice (Single Selection) | CIS <br> E8 |  |
+
 
 Options
 - [x] Privilege Escalation
@@ -329,6 +341,10 @@ and inspect the report
 | Playbook	 | soe-rhel9-cis-hardenning.yml |  |
 | Credentials	 |  RHEL Credential |  |
 
+Survey
+| Question	 |  Answer variable name| Answer Type | Multiple Choice Options |
+|----------|----------|----------|--------------|
+| Compliance Profile ?| compliance_profile_id | Multiple Choice (Single Selection) | CIS <br> E8 |  |
 
 Options
 - [x] Privilege Escalation
