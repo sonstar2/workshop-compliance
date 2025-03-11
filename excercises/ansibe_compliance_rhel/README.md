@@ -267,7 +267,7 @@ then Click ADD and select **Add Job Template**
 
 | Key | Value | Notes |
 |----------|----------|----------|
-| Name | JT - RHEL Scan CIS Pre |  |
+| Name | JT - RHEL Security Scan Pre |  |
 | Job Type | Run |  |
 | Organization | user org |  |
 | Inventory	 | Workshop RHEL  |  |
@@ -275,11 +275,6 @@ then Click ADD and select **Add Job Template**
 | Execution Environment	 | Default Execution Environment |  |
 | Playbook	 | soe-rhel-run-scan.yml |  |
 | Credentials	 |  RHEL Credential |  |
-
-Survey
-| Question	 |  Answer variable name| Answer Type | Multiple Choice Options |
-|----------|----------|----------|--------------|
-| Compliance Profile ?| compliance_profile_id | Multiple Choice (Single Selection) | CIS and E8 |  |
 
 Survey
 | Question	 |  Answer variable name| Answer Type | Multiple Choice Options |
@@ -332,13 +327,13 @@ and inspect the report
 
 | Key | Value | Notes |
 |----------|----------|----------|
-| Name | JT - RHEL CIS Harden |  |
+| Name | JT - RHEL Security Harden |  |
 | Job Type | Run |  |
 | Organization | user org |  |
 | Inventory	 | Workshop RHEL  |  |
 | Project	 | Git Compliance |  |
 | Execution Environment	 | Default Execution Environment |  |
-| Playbook	 | soe-rhel9-cis-hardenning.yml |  |
+| Playbook	 | soe-rhel9-hardenning.yml |  |
 | Credentials	 |  RHEL Credential |  |
 
 Survey
@@ -359,7 +354,7 @@ Save, Launch the Template and wait for ~10 mins for it to complete.
 
 | Key | Value | Notes |
 |----------|----------|----------|
-| Name | JT - RHEL Scan CIS Post |  |
+| Name | JT - RHEL Security Scan Post |  |
 | Job Type | Run |  |
 | Organization | user org |  |
 | Inventory	 | Workshop RHEL  |  |
@@ -367,6 +362,11 @@ Save, Launch the Template and wait for ~10 mins for it to complete.
 | Execution Environment	 | Default Execution Environment |  |
 | Playbook	 | soe-rhel-run-scan.yml |  |
 | Credentials	 |  RHEL Credential |  |
+
+Survey
+| Question	 |  Answer variable name| Answer Type | Multiple Choice Options |
+|----------|----------|----------|--------------|
+| Compliance Profile ?| compliance_profile_id | Multiple Choice (Single Selection) | CIS <br> E8 |  |
 
 
 Options
