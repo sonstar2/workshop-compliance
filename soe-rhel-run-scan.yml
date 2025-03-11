@@ -19,7 +19,8 @@
       ansible.builtin.fetch:
         src: "/tmp/oscap-report-{{ ansible_nodename }}-{{ v_stage }}.html"
         dest: "/home/{{ v_bastion_user }}/oscap-report-{{ ansible_nodename }}-{{ v_stage }}.html"
-        flat: true
+        flat: false
+
 
     - name: copy report to bastion 
       ansible.builtin.copy:
